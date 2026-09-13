@@ -15,6 +15,10 @@
 | [`realtime-events`](skills/realtime-events) | stream call events over WebSocket, with replay |
 | [`web-calls`](skills/web-calls) | put a voice agent on a web page with the browser SDK |
 | [`read-call-results`](skills/read-call-results) | transcripts, recordings, cost breakdowns, AI insights |
+| [`create-schedule`](skills/create-schedule) | call one contact on a recurrence, in their timezone, with retries |
+| [`manage-contacts`](skills/manage-contacts) | CRM sync: create, update, search by phone, tag, timeline, import/export |
+| [`do-not-call`](skills/do-not-call) | suppression list: add, bulk import, check, wire unsubscribes |
+| [`read-billing`](skills/read-billing) | balance and buckets, charges, ledger, cost totals, invoices |
 
 ## Install
 
