@@ -22,15 +22,15 @@ def.nodes.booking_agent.transitions.push({ targetAgentId: "main_agent", keywords
 def.services.llm = { provider: "openai", model: "gpt-4o-mini", temperature: 0.4 };
 
 await client.flows.updateFlow(flowId, { definition: def, tags: ["support", "v2"] });
-const v = await client.flows.validateFlow(flowId);                     // { valid, errors[{field, code, message}], warnings[] }
-if (!v.valid) throw new Error(JSON.stringify(v.errors));
+await client.flows.validateFlow(flowId);   // 200 { warnings[] } when valid; throws a 400 `validation_failed` error whose body.errors[] lists { field, code, message }
 await client.flows.publishFlow(flowId, { notes: "return transition from booking; gpt-4o-mini", expectedVersion: flow.version });
 ```
 ```python
 flow = client.flows.get_flow(flow_id)
 d = flow.definition; d.nodes["main_agent"].agent_prompt = "Greet the caller, then …"
 client.flows.update_flow(flow_id, definition=d)
-client.flows.validate_flow(flow_id); client.flows.publish_flow(flow_id, notes="…", expected_version=flow.version)
+client.flows.validate_flow(flow_id)   # raises BadRequestError with errors[] when invalid
+client.flows.publish_flow(flow_id, notes="…", expected_version=flow.version)
 ```
 `expectedVersion` makes publish fail with `409 flow_version_conflict` if someone else published in between — re-read and retry rather than overwrite.
 
@@ -54,6 +54,6 @@ Validation error codes worth handling: `required`, `missing_main_agent`, `multip
 
 ## Delete
 
-`DELETE /flows/{flowId}` — refuse if numbers are still connected (disconnect or reconnect them first); calls that referenced it keep their history.
+`DELETE /flows/{flowId}` — refused (`400`) while any phone number is connected to it; disconnect or reconnect them first. Calls that referenced it keep their history.
 
 Docs: https://docs.talkif.ai/concepts/flows-and-versions · https://docs.talkif.ai/build/test-and-publish

@@ -66,7 +66,7 @@ Rules the validator enforces at publish: one `main_agent` and it is `initialNode
 ## Publish, versions, rollback
 
 ```typescript
-await client.flows.validateFlow(flowId);                       // POST /flows/{id}/validate — errors without publishing
+await client.flows.validateFlow(flowId);                       // POST /flows/{id}/validate — 200 {warnings} or 400 validation_failed {errors[]} without publishing
 const pub = await client.flows.publishFlow(flowId, { notes: "shorter greeting" });  // → new version, e.g. 1.0.4
 await client.flows.rollbackFlow(flowId, "1.0.3");              // republishes 1.0.3's content as a NEW version
 const v = await client.flows.getFlowVersion(flowId, "1.0.3");  // exact definition of any version
