@@ -56,4 +56,4 @@ curl https://api.talkif.ai/api/v1/calls \
 - Rotate by creating a new key, deploying it, confirming usage moved, then revoking the old one. Revocation is immediate and permanent.
 - All API errors share one shape: `{ "code", "title", "status", "detail", "requestId" }`. Branch on `code`; quote `requestId` to support. Catalogue: https://docs.talkif.ai/api-reference/errors
 
-Docs: https://docs.talkif.ai/integrate/authentication · SDKs: https://docs.talkif.ai/integrate/sdks
+Docs: https://docs.talkif.ai/integrate/authentication · SDKs: https://docs.talkif.ai/sdks/server

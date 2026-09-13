@@ -57,7 +57,7 @@ curl -X POST https://api.talkif.ai/api/v1/calls \
 | `201` | `initiated` | dialing now; `callId`, `status` |
 | `202` | `queued` | account at concurrent-call limit; `queueId`, `position`, `estimatedWaitSeconds`. Placed automatically — **treat as success** |
 
-Refusals (4xx, `code` field): `contact_on_dnc_list`, `outside_callable_hours`, `insufficient_balance`, `rate_limit`, `capacity_limit` (queue full), `flow_not_published`, `phone_not_active`, `invalid_number` (emergency numbers are blocked).
+Refusals (4xx, `code` field): `validation_failed` (not E.164, emergency number — see `errors[]`), `flow_not_published`, `phone_number_not_active` / `phone_number_not_verified` / `phone_number_cannot_initiate_calls`, `insufficient_balance` (402), `contact_on_dnc_list`, `outside_callable_hours`, `concurrent_call_limit_exceeded`, `daily_call_limit_exceeded` (422), `queue_full`, `rate_limit_exceeded` (429). Don't confuse these with the `failureCode` values on a call record (`rate_limit`, `capacity_limit`, `phone_not_active`, `invalid_number`) — those describe a call that was created and then failed.
 
 ## Following the call
 

@@ -61,4 +61,4 @@ Events: `statechange` (`requesting → connecting → connected → ended`), `co
 
 20 key exchanges/IP/hour · 10 calls/IP/hour · 60 calls/key/hour · per-key concurrency (yours, default 2) · per-session calls (yours, default 3), session lifetime 30 min, one active call per session · account concurrency and the $1.00 balance gate apply · disabling web calls or regenerating the key stops new calls immediately. Calls are billed like phone calls minus telephony and show `providerType: webrtc`.
 
-Docs: https://docs.talkif.ai/integrate/web-calls · source: https://github.com/Talkif-ai/webrtc-js
+Docs: https://docs.talkif.ai/sdks/browser · source: https://github.com/Talkif-ai/webrtc-js
