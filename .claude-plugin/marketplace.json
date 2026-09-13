@@ -1,0 +1,11 @@
+{
+  "name": "talkif-skills",
+  "owner": { "name": "Talkif" },
+  "plugins": [
+    {
+      "name": "talkif-voice-agents",
+      "source": ".",
+      "description": "Agent skills for building on the Talkif API and SDKs."
+    }
+  ]
+}

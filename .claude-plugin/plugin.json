@@ -1,0 +1,8 @@
+{
+  "name": "talkif-voice-agents",
+  "version": "0.1.0",
+  "description": "Build AI phone agents on Talkif: flows, prompts, calls, campaigns, phone numbers, webhooks, real-time events, web calls.",
+  "author": { "name": "Talkif", "url": "https://talkif.ai" },
+  "homepage": "https://docs.talkif.ai",
+  "license": "MIT"
+}
