@@ -35,7 +35,7 @@ Alert threshold: a day of spend at your busiest, above your auto-recharge thresh
 
 ## Cost totals and per-call cost
 
-`GET /billing/costs?period=&startDate=&endDate=` → totals by category (LLM, STT, TTS, telephony) with period comparison. `GET /billing/costs/calls/{callId}` → one call's line items (telephony minutes rounded up; STT seconds; LLM in/out tokens; TTS characters; infrastructure seconds; analysis tokens), each with the rate that applied at the time.
+`GET /billing/costs?period=today|week|month|custom`GET /billing/costs?period=&startDate=&endDate=` → totals by categorystartDate=`GET /billing/costs?period=&startDate=&endDate=` → totals by categoryendDate=` → totals by category (LLM, STT, TTS, telephony) with period comparison. `GET /billing/costs/calls/{callId}` → one call's line items (telephony minutes rounded up; STT seconds; LLM in/out tokens; TTS characters; infrastructure seconds; analysis tokens), each with the rate that applied at the time.
 
 Attribution: every call record has `flowId`, `campaignId`, `contactId` — join charges to them via `GET /calls?…` for cost per flow, campaign or customer. `GET /flows/{flowId}/stats` and `GET /campaigns/{id}/analytics` give ready-made rollups.
 
