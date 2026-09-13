@@ -67,7 +67,7 @@ Poll `GET /calls/{callId}` sparingly, or subscribe to the WebSocket stream — s
 
 ## Safe retries
 
-There is no idempotency key on call creation. After a **timeout** (not a 4xx), check before re-issuing: `GET /calls/history?contactId=…&startDate=<a few minutes ago>` (or `phoneNumber=`). A call created since your request → done; nothing → retry. Set the SDK's `maxRetries: 0` for `makeCall` so it doesn't auto-retry a possibly-succeeded POST.
+There is no idempotency key on call creation. After a **timeout** (not a 4xx), check before re-issuing: `GET /calls?contactId=…&startDate=<a few minutes ago>` (or `phoneNumber=`; SDK: `getCallHistory` / `get_call_history`). A call created since your request → done; nothing → retry. Set the SDK's `maxRetries: 0` for `makeCall` so it doesn't auto-retry a possibly-succeeded POST.
 
 For a list of people, use the `create-campaign` skill instead of a loop — campaigns pace, retry and skip DNC for you.
 

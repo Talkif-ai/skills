@@ -40,7 +40,7 @@ client = Talkif(token=os.environ["TALKIF_API_KEY"])   # AsyncTalkif for asyncio
 ```
 
 ```bash
-curl https://api.talkif.ai/api/v1/calls/active \
+curl https://api.talkif.ai/api/v1/calls \
   -H "Authorization: Bearer $TALKIF_API_KEY"
 ```
 
@@ -48,7 +48,7 @@ curl https://api.talkif.ai/api/v1/calls/active \
 
 ## Verify it works
 
-`GET /calls/active` returns `200 { "calls": [], "meta": … }` on a fresh account. `401` = missing/invalid key; `403` with a scope error code = the key lacks that scope.
+`GET /calls` returns `200 { "calls": [], "meta": … }` on a fresh account (SDK: `calls.getActiveCalls()` / `get_active_calls()`). `401` = missing/invalid key; `403` with a scope error code = the key lacks that scope.
 
 ## Rules
 

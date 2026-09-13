@@ -44,7 +44,7 @@ Per-flow `analysisInstructions` are appended to the analysis prompt ("extract bu
 
 ## Listing and filtering
 
-`GET /calls/history` — filters `status, direction, source, phoneNumber, isLead, flowId, contactId, scheduleId, campaignId, providerType, search, startDate, endDate`; `sortBy` (`status | direction | duration | totalCost | startedAt`), `sortDirection`; `limit`/`offset` (starts at 0). `GET /calls/active` for in-flight calls. Per contact: `GET /contacts/{contactId}/calls`.
+`GET /calls` — one list for live and finished calls (`status=inprogress` for live). Filters `status, direction, source, phoneNumber, isLead, flowId, contactId, scheduleId, campaignId, providerType, search, startDate, endDate`; `sortBy` (`status | direction | duration | totalCost | startedAt`), `sortDirection`; `limit`/`offset` (starts at 0). The 0.1.x SDKs expose this list as `getCallHistory` / `get_call_history` (and `getActiveCalls` for live calls). Per contact: `GET /contacts/{contactId}/calls`.
 
 ```typescript
 for await (const c of await client.calls.getCallHistory({ status: "completed", startDate: "2026-09-01T00:00:00Z" })) {
