@@ -4,6 +4,8 @@
 
 | Skill | Teaches the agent to |
 |---|---|
+| [`quickstart`](skills/quickstart) | **start here** — sequence key → flow → number → connect → test → results |
+| [`api-conventions`](skills/api-conventions) | base URL, casing, pagination, errors, rate limits, retries — load with any other skill |
 | [`setup-api-key`](skills/setup-api-key) | authenticate: API keys, scopes, base URL, SDK clients |
 | [`create-flow`](skills/create-flow) | build a flow definition (agents, transitions, providers), publish it, manage versions |
 | [`write-prompts`](skills/write-prompts) | write System and Agent Prompts that work on a phone line, with `{{variables}}` |
@@ -19,6 +21,11 @@
 | [`manage-contacts`](skills/manage-contacts) | CRM sync: create, update, search by phone, tag, timeline, import/export |
 | [`do-not-call`](skills/do-not-call) | suppression list: add, bulk import, check, wire unsubscribes |
 | [`read-billing`](skills/read-billing) | balance and buckets, charges, ledger, cost totals, invoices |
+| [`handle-inbound-calls`](skills/handle-inbound-calls) | make a number answer: flow connection, unknown callers, busy reasons, inbound prompts |
+| [`update-flow`](skills/update-flow) | get → modify → PUT → validate → publish; full-definition semantics; versions |
+| [`test-a-flow`](skills/test-a-flow) | draft tests via the browser SDK, real test calls, the failure paths to exercise |
+| [`choose-models-and-voices`](skills/choose-models-and-voices) | pick STT/LLM/TTS from the live catalogue; latency, quality, cost |
+| [`troubleshoot-calls`](skills/troubleshoot-calls) | every failureCode and endReason → cause → fix; the error catalogue |
 
 ## Install
 
