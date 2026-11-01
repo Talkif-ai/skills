@@ -30,19 +30,19 @@ Pick a model that lists the caller's language; auto-detecting models (Soniox, xA
 
 ## LLM
 
-Speed beats brilliance on the phone. Start with a small fast model (`gpt-4o-mini` class); move up only for multi-step reasoning inside a turn or strict policy compliance. Reasoning models add thinking time before every reply — keep `reasoningEffort` at the lowest the model accepts, or avoid them for live calls. Settings: `temperature` 0.3–0.7 (models that reject it have it stripped), `maxTokens` a few hundred (safety net, not style), `priorityTier: true` (OpenAI, 2× price, higher rate limits) for customer-facing lines under load.
+Speed beats brilliance on the phone. Start with a small fast model (`gpt-5.6-luna` class); move up only for multi-step reasoning inside a turn or strict policy compliance. Reasoning models add thinking time before every reply — keep `reasoningEffort` at the lowest the model accepts (Talkif picks the lowest when you leave it out), or avoid them for live calls. Settings: `maxTokens` a few hundred (safety net, not style); `temperature` 0.3–0.7 only on models that accept it — the current GPT-5.6 and Claude 5.5 models do not, and publishing a flow that sets it on them fails. `GET /models` lists what each model supports.
 
 ## TTS
 
-Listen before deciding — try two or three voices with the same prompt. Flash/low-latency models for conversation (`eleven_flash_v2_5`); expressive premium models where tone carries the brand. **ElevenLabs v3** (`eleven_v3`, `eleven_v3_conversational`) performs inline delivery tags (`[warmly]`) from the prompt, but only `stability` applies and tags appear in transcripts — see `write-prompts`. Settings by provider: ElevenLabs `stability similarity style speakerBoost speed`; Cartesia `emotion speed volume language`; Google/xAI/Rime `voiceId`, language, speed where offered.
+Listen before deciding — try two or three voices with the same prompt. Low-latency models for conversation (`eleven_v4_turbo`, Cartesia `sonic-3.6`); expressive premium models where tone carries the brand. **ElevenLabs v4 Turbo** (`eleven_v4_turbo`) performs inline delivery tags (`[warmly]`) from the prompt, but only `stability` applies and tags appear in transcripts — see `write-prompts`. Settings by provider: ElevenLabs `stability similarity style speakerBoost speed`; Cartesia `emotion speed volume language`; Google/xAI/Rime `voiceId`, language, speed where offered.
 
 ## A default that works
 
 ```json
 "services": {
   "stt": { "provider": "deepgram", "model": "nova-3-general", "language": "en" },
-  "llm": { "provider": "openai", "model": "gpt-4o-mini", "temperature": 0.5, "maxTokens": 300 },
-  "tts": { "provider": "elevenlabs", "model": "eleven_flash_v2_5", "voiceId": "<from /models/tts/voices>" }
+  "llm": { "provider": "openai", "model": "gpt-5.6-luna", "maxTokens": 300 },
+  "tts": { "provider": "elevenlabs", "model": "eleven_v4_turbo", "voiceId": "<from /models/tts/voices>" }
 }
 ```
 Change one service at a time; compare time-to-first-response, interrupted turns and the LLM/TTS cost lines on the same test conversation.
