@@ -19,11 +19,11 @@ const flow = await client.flows.getFlow(flowId);                       // draft 
 const def = structuredClone(flow.definition);
 def.nodes.main_agent.agentPrompt = "Greet the caller, then …";
 def.nodes.booking_agent.transitions.push({ targetAgentId: "main_agent", keywords: "The caller asks about anything other than booking." });
-def.services.llm = { provider: "openai", model: "gpt-4o-mini", temperature: 0.4 };
+def.services.llm = { provider: "openai", model: "gpt-5.6-luna" };
 
 await client.flows.updateFlow(flowId, { definition: def, tags: ["support", "v2"] });
 await client.flows.validateFlow(flowId);   // 200 { warnings[] } when valid; throws a 400 `validation_failed` error whose body.errors[] lists { field, code, message }
-await client.flows.publishFlow(flowId, { notes: "return transition from booking; gpt-4o-mini", expectedVersion: flow.version });
+await client.flows.publishFlow(flowId, { notes: "return transition from booking; gpt-5.6-luna", expectedVersion: flow.version });
 ```
 ```python
 flow = client.flows.get_flow(flow_id)

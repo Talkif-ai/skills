@@ -39,7 +39,7 @@ Split work across agents: triage → specialists, or open → do → close. Each
 
 ## Emotion tags (ElevenLabs v3 only)
 
-If the flow's TTS is `eleven_v3` / `eleven_v3_conversational`, the voice performs inline tags like `[warmly]`, `[laughs]`, `[whispers]`, `[hesitates]`. Then, and only then, add to the System Prompt: *"Use at most one bracketed delivery tag per reply, only where it changes meaning; never tag routine sentences."* On any other voice tags are read aloud as text. Tags also appear verbatim in transcripts, and v3 honours only the *stability* voice control. ElevenLabs guide: https://elevenlabs.io/docs/best-practices/prompting/eleven-v3
+If the flow's TTS is `eleven_v4_turbo`, the voice performs inline tags like `[warmly]`, `[laughs]`, `[whispers]`, `[hesitates]`. Then, and only then, add to the System Prompt: *"Use at most one bracketed delivery tag per reply, only where it changes meaning; never tag routine sentences."* On any other voice tags are read aloud as text. Tags also appear verbatim in transcripts, and v4 Turbo honours only the *stability* voice control.
 
 ## Dynamic prompts
 

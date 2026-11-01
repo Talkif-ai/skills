@@ -29,8 +29,8 @@ const flow = await client.flowTemplates.instantiateTemplate("customer-support", 
     "initialNode": "main_agent",
     "services": {
       "stt": { "provider": "deepgram", "model": "nova-3-general", "language": "en" },
-      "llm": { "provider": "openai", "model": "gpt-4o-mini", "temperature": 0.5, "maxTokens": 300 },
-      "tts": { "provider": "elevenlabs", "model": "eleven_flash_v2_5", "voiceId": "<voice-id>" }
+      "llm": { "provider": "openai", "model": "gpt-5.6-luna", "maxTokens": 300 },
+      "tts": { "provider": "elevenlabs", "model": "eleven_v4_turbo", "voiceId": "<voice-id>" }
     },
     "nodes": {
       "main_agent": {
