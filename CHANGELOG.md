@@ -9,3 +9,4 @@ All notable changes to the Talkif agent skills.
 - `choose-models-and-voices`: ElevenLabs v4 Turbo replaces the retired v3 models in the TTS advice; the LLM advice no longer says unsupported settings are stripped (publishing rejects them) and drops `priorityTier`, which no current model offers.
 - `write-prompts`: delivery tags are described for `eleven_v4_turbo`, the voice model that performs them now that v3 is retired.
 - `update-flow`: the example switches to `gpt-5.6-luna` without `temperature`.
+- `choose-models-and-voices`: the voice settings no longer list Google and Rime, which Talkif doesn't offer for new selections; the skill points to the live model list instead, and its description no longer offers "ElevenLabs v3 vs flash" (both retired).
