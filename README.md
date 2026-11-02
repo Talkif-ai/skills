@@ -24,7 +24,7 @@ npx skills add Talkif-ai/skills --skill make-call
 
 ## Then just ask
 
-> Set up Talkif, create a support flow from a template, buy a US number and call my phone.
+> Set up Talkif, create a support flow from a template, connect it to my Talkif number and call my phone.
 
 > Add a flow function that checks appointment availability on my API, and attach it to the booking agent.
 
@@ -40,7 +40,7 @@ The agent loads `quickstart` for the sequence and then the skill for each step.
 
 - A Talkif account — [app.talkif.ai](https://app.talkif.ai) — with an API key (`Developer → Credentials`) in `TALKIF_API_KEY`.
 - Node 18+ for `@talkif/sdk`, Python 3.10+ for `talkif`. Skills also show plain REST.
-- Purchased balance to buy a phone number; the welcome credit covers building and browser test calls.
+- A phone number, bought in the dashboard by the account Owner (API keys can't buy numbers). Until the account's first payment, the welcome credit can't pay for numbers; it covers building and browser test calls.
 
 ## Skills
 
@@ -71,7 +71,7 @@ The agent loads `quickstart` for the sequence and then the skill for each step.
 | [`handle-inbound-calls`](skills/handle-inbound-calls) | make a number answer: flow connection, unknown callers, why a call is busy |
 | [`create-campaign`](skills/create-campaign) | call a list: import, DNC scrub, concurrency, contact-local windows, lifecycle, analytics |
 | [`create-schedule`](skills/create-schedule) | call one contact on a recurrence, in their timezone, with retries |
-| [`manage-phone-numbers`](skills/manage-phone-numbers) | buy a number, connect a flow, pin a version, release; bring-your-own-carrier facts |
+| [`manage-phone-numbers`](skills/manage-phone-numbers) | find a number to buy, connect a flow, pin a version, release; bring-your-own-carrier facts |
 | [`manage-contacts`](skills/manage-contacts) | CRM sync: create, update, search by phone, tags, timeline, import/export |
 | [`do-not-call`](skills/do-not-call) | suppression list: add, bulk import, check, wire unsubscribes |
 

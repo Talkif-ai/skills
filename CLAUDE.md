@@ -21,7 +21,7 @@ Never write a method name or field from memory. Cross-check every `METHOD /path`
 
 Skills drift silently. Recheck all of them when any of these change: the public spec (`openapi.json`), an SDK release, `docs.yml` slugs (every `Docs:` link must resolve), the browser SDK API. Search `skills/` for the changed endpoint/method/slug and update every hit in the same PR; add a changelog line in `Talkif-ai/docs` if the change is customer-visible.
 
-Known "not yet" facts baked into skills (flip when they ship): no client idempotency key on `POST /calls`; call transfer not available; SDK 0.1.x still names the call list `getCallHistory` while the API is `GET /calls`.
+Known "not yet" facts baked into skills (flip when they ship): no client idempotency key on `POST /calls`; call transfer not available; the call list is `GET /calls`, `calls.listCalls` in SDK 0.3.0 (`getCallHistory` / `getActiveCalls` were removed in 0.2.0), and it returns one page, not a pager.
 
 ## Conventions
 

@@ -48,7 +48,7 @@ curl https://api.talkif.ai/api/v1/calls \
 
 ## Verify it works
 
-`GET /calls` returns `200 { "calls": [], "meta": … }` on a fresh account (SDK: `calls.getActiveCalls()` / `get_active_calls()`). `401` = missing/invalid key; `403` with a scope error code = the key lacks that scope.
+`GET /calls` returns `200 { "calls": [], "meta": … }` on a fresh account (SDK: `calls.listCalls()` / `list_calls()`). `401` = missing/invalid key; `403` with a scope error code = the key lacks that scope.
 
 ## Rules
 

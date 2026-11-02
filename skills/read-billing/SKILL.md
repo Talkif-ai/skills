@@ -7,7 +7,7 @@ description: Read Talkif billing programmatically — balance and its buckets, t
 
 ## Concepts
 
-Talkif is prepaid. The balance is made of **buckets** spent in order: `subscription` → `promotional` → `bonus` → `purchased`. Calls and analysis can use any bucket; **phone purchases and rental use only purchased/subscription**. A call needs **≥ $1.00 available** to start and is never cut off mid-call; if a charge takes the balance ≤ 0 the account is **suspended** (no new calls, everything else open) until a top-up — unless auto-recharge is on. Topping up, cards and auto-recharge are dashboard-only; the API is read-only for money.
+Talkif is prepaid. The balance is made of **buckets** spent in order: `subscription` → `promotional` → `bonus` → `purchased`. Calls and analysis can use any bucket. **Phone purchases and rental can't use promotional or bonus credit until the account's first payment**; after it, every bucket pays for them in the same order. A call needs **≥ $1.00 available** to start and is never cut off mid-call; if a charge takes the balance ≤ 0 the account is **suspended** (no new calls, everything else open) until a top-up — unless auto-recharge is on. Topping up, cards and auto-recharge are dashboard-only; the API is read-only for money.
 
 ## Balance
 
