@@ -72,7 +72,7 @@ Recording resolves **flow → number → account**; a flow that forces recording
 ## Bringing your own carrier (dashboard-only)
 
 Providers are created in the dashboard (**Phone Numbers → Providers → Add**), not via API:
-- **SIP trunk**: host, port, protocol (UDP/TCP/TLS), username/password, and the carrier's source IPs/CIDR. The carrier must allowlist Talkif's SIP address **`sip.talkif.ai` / `63.176.211.13`** (port 5060) and route inbound calls to it; Talkif does not REGISTER. Numbers activate immediately.
+- **SIP trunk**: host, port, protocol (UDP/TCP/TLS), username/password, and the carrier's public source IPs/CIDR. Talkif has one SIP address per region, both on port 5060: **EU `sip.talkif.ai` / `63.176.211.13`** and **US `sip.us.talkif.ai` / `44.218.212.38`**. Outbound calls leave from the address of the provider's region (picked from where the carrier's IPs are; US when that can't be determined), so the carrier must allowlist that address — **both if unsure**. Inbound calls can go to either address and run in that region. Talkif does not REGISTER. Numbers activate immediately.
 - **Your Twilio account**: Account SID + Auth Token; pick numbers to register; Talkif sets their voice webhook.
 - **WhatsApp Business**: Embedded Signup or WABA credentials; numbers are `PENDING` until Meta enables calling; receive-only; no telephony charge.
 

@@ -44,18 +44,31 @@ Per-flow `analysisInstructions` are appended to the analysis prompt ("extract bu
 
 ## Listing and filtering
 
-`GET /calls` — one list for live and finished calls (`status=inprogress` for live). Filters `status, direction, source, phoneNumber, isLead, flowId, contactId, scheduleId, campaignId, providerType, search, startDate, endDate`; `sortBy` (`status | direction | duration | totalCost | startedAt`), `sortDirection`; `limit`/`offset` (starts at 0). The 0.1.x SDKs expose this list as `getCallHistory` / `get_call_history` (and `getActiveCalls` for live calls). Per contact: `GET /contacts/{contactId}/calls`.
+`GET /calls` — one list for live and finished calls (`status=inprogress` for live). Filters `status, direction, source, phoneNumber, isLead, flowId, contactId, scheduleId, campaignId, providerType, search, startDate, endDate`; `sortBy` (`status | direction | duration | totalCost | startedAt`), `sortDirection`; `limit`/`offset` (starts at 0, at most 100 per page). SDK: `calls.listCalls` / `list_calls` (0.2.0 replaced `getCallHistory` and `getActiveCalls`). Per contact: `GET /contacts/{contactId}/calls` (SDK `contacts.getContactCalls`).
 
+`listCalls` returns **one page** — `calls` plus `meta` (`limit`, `offset`, `total`) — not an auto-pager; page with `offset`:
 ```typescript
-for await (const c of await client.calls.getCallHistory({ status: "completed", startDate: "2026-09-01T00:00:00Z" })) {
-  console.log(c.id, c.endReason, c.duration);
+let offset = 0;
+for (;;) {
+  const page = await client.calls.listCalls({ status: "completed", startDate: "2026-09-01T00:00:00Z", limit: 100, offset });
+  for (const c of page.calls) console.log(c.id, c.endReason, c.duration);
+  offset += page.calls.length;
+  if (page.calls.length === 0 || offset >= page.meta.total) break;
 }
 ```
 ```python
-for c in client.calls.get_call_history(status="completed", start_date="2026-09-01T00:00:00Z"):
-    print(c.id, c.end_reason, c.duration)
+from datetime import datetime, timezone
+
+offset = 0
+while True:
+    page = client.calls.list_calls(status="completed", start_date=datetime(2026, 9, 1, tzinfo=timezone.utc), limit=100, offset=offset)
+    for c in page.calls:
+        print(c.id, c.end_reason, c.duration)
+    offset += len(page.calls)
+    if not page.calls or offset >= page.meta.total:
+        break
 ```
-SDK list calls return a pager; iterate to page automatically.
+`contacts.getContactCalls` is a pager: `for await` over it fetches every page.
 
 ## Aggregates
 
