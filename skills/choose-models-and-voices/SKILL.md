@@ -1,6 +1,6 @@
 ---
 name: choose-models-and-voices
-description: Pick the STT, LLM and TTS providers and models for a Talkif flow from the live catalogue — GET /models and GET /models/tts/voices, latency vs quality vs cost trade-offs for phone audio, per-provider settings, ElevenLabs v3 vs flash, and a safe default. Use when building or tuning a flow's services block.
+description: Pick the STT, LLM and TTS providers and models for a Talkif flow from the live catalogue — GET /models and GET /models/tts/voices, latency vs quality vs cost trade-offs for phone audio, per-provider settings, ElevenLabs v4 Turbo vs Cartesia Sonic, and a safe default. Use when building or tuning a flow's services block.
 ---
 
 # Choose models and voices
@@ -34,7 +34,7 @@ Speed beats brilliance on the phone. Start with a small fast model (`gpt-5.6-lun
 
 ## TTS
 
-Listen before deciding — try two or three voices with the same prompt. Low-latency models for conversation (`eleven_v4_turbo`, Cartesia `sonic-3.6`); expressive premium models where tone carries the brand. **ElevenLabs v4 Turbo** (`eleven_v4_turbo`) performs inline delivery tags (`[warmly]`) from the prompt, but only `stability` applies and tags appear in transcripts — see `write-prompts`. Settings by provider: ElevenLabs `stability similarity style speakerBoost speed`; Cartesia `emotion speed volume language`; Google/xAI/Rime `voiceId`, language, speed where offered.
+Listen before deciding — try two or three voices with the same prompt. Low-latency models for conversation (`eleven_v4_turbo`, Cartesia `sonic-3.6`); expressive premium models where tone carries the brand. **ElevenLabs v4 Turbo** (`eleven_v4_turbo`) performs inline delivery tags (`[warmly]`) from the prompt, but only `stability` applies and tags appear in transcripts — see `write-prompts`. Settings by provider: ElevenLabs `stability similarity style speakerBoost speed`; Cartesia `emotion speed volume language`; xAI `voiceId`, language, speed. Talkif offers ElevenLabs, Cartesia and xAI voices; check `GET /models` for the current list rather than assuming a provider.
 
 ## A default that works
 
