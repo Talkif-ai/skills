@@ -1,0 +1,38 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Talkif-ai/talkif",
+  "title": "Talkif",
+  "description": "AI phone agents, calls and campaigns as tools, and messaging between your AI agent sessions.",
+  "version": "0.1.0",
+  "websiteUrl": "https://docs.talkif.ai/integrate/mcp",
+  "icons": [
+    {
+      "src": "https://talkif.ai/icon-512.png",
+      "mimeType": "image/png",
+      "sizes": ["512x512"]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.talkif.ai/api/v1/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Optional. A Talkif API key gives every API tool the key's scopes reach. Without it, the client signs in with Talkif (OAuth) and gets the Connectors tools.",
+          "value": "Bearer {talkif_api_key}",
+          "variables": {
+            "talkif_api_key": {
+              "description": "A Talkif API key, from Developer → Credentials in the Talkif dashboard.",
+              "isRequired": true,
+              "isSecret": true,
+              "placeholder": "tif_live_..."
+            }
+          },
+          "isRequired": false,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
