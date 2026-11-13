@@ -20,6 +20,14 @@ npx skills add Talkif-ai/skills --skill make-call
 /plugin install talkif-voice-agents@talkif-skills
 ```
 
+**Gemini CLI**
+
+```sh
+gemini extensions install https://github.com/Talkif-ai/skills
+```
+
+The extension loads the skills and adds the [Talkif MCP server](https://docs.talkif.ai/integrate/mcp). Gemini CLI opens the Talkif sign-in page the first time it connects (or run `/mcp auth talkif`); signed in this way, the server gives the Connectors tools (your other agent sessions and your phone). The skills use your API key for everything else.
+
 **Manual** — copy `skills/<name>/` into your agent's skills directory (`.claude/skills/` for Claude Code).
 
 ## Then just ask

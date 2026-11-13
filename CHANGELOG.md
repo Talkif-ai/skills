@@ -2,6 +2,12 @@
 
 All notable changes to the Talkif agent skills.
 
+## 2026-11-13
+
+### Added
+- Gemini CLI extension (`gemini-extension.json`): `gemini extensions install https://github.com/Talkif-ai/skills` loads the skills and adds the Talkif MCP server, signed in with Talkif.
+- `server.json` and a release workflow that lists the Talkif MCP server in the official MCP Registry as `io.github.Talkif-ai/talkif` when a `v*` tag is pushed.
+
 ## 2026-11-02
 
 ### Fixed
